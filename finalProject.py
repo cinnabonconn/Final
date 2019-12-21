@@ -1,3 +1,7 @@
+# This is my final project for ITEC 1150. 
+# I was not able to use JSON with this, but i think my solution was a good way to go about it.
+# I also was able to get the second extra credit part to work, which was exciting.
+
 # You need imports for the program to work
 import requests
 from bs4 import BeautifulSoup
@@ -78,29 +82,29 @@ i = 15  # Variable for iterating
 for data in results:  # Running through every result
       data = results3[i]  # Print the credits out
       if "9:40pm" in str(data):
-            time.append(str(data)[92:98] + '-' + str(data)[101:107])  # Adding all the instructors to an array
+            time.append(str(data)[92:98] + '-' + str(data)[101:107])  # Adding all the times to an array
       elif "4:10pm" in str(data):
-            time.append(str(data)[92:99] + '-' + str(data)[102:108])  # Adding all the instructors to an array
+            time.append(str(data)[92:99] + '-' + str(data)[102:108])  # Adding all the times to an array
       elif "6:40pm" in str(data):
-            time.append(str(data)[92:98] + '-' + str(data)[101:107])  # Adding all the instructors to an array
+            time.append(str(data)[92:98] + '-' + str(data)[101:107])  # Adding all the times to an array
       elif "9:35pm" in str(data):
-            time.append(str(data)[92:98] + '-' + str(data)[101:107])  # Adding all the instructors to an array
+            time.append(str(data)[92:98] + '-' + str(data)[101:107])  # Adding all the times to an array
       elif "3:00pm" in str(data):
-            time.append(str(data)[92:99] + '-' + str(data)[102:108])  # Adding all the instructors to an array
+            time.append(str(data)[92:99] + '-' + str(data)[102:108])  # Adding all the times to an array
       elif "2:05pm" in str(data):
-            time.append(str(data)[92:98] + '-' + str(data)[102:108])  # Adding all the instructors to an array
+            time.append(str(data)[92:98] + '-' + str(data)[102:108])  # Adding all the times to an array
       elif "1:30pm" in str(data):
-            time.append(str(data)[92:98] + '-' + str(data)[101:107])  # Adding all the instructors to an array
+            time.append(str(data)[92:98] + '-' + str(data)[101:107])  # Adding all the times to an array
       elif "1:10pm" in str(data):
-            time.append(str(data)[92:98] + '-' + str(data)[102:107])  # Adding all the instructors to an array
+            time.append(str(data)[92:98] + '-' + str(data)[102:107])  # Adding all the times to an array
       elif "4:50pm" in str(data):
-            time.append(str(data)[92:98] + '-' + str(data)[102:108])  # Adding all the instructors to an array
+            time.append(str(data)[92:98] + '-' + str(data)[102:108])  # Adding all the times to an array
       elif "11:05am" in str(data):
-            time.append(str(data)[92:98] + '-' + str(data)[101:108])  # Adding all the instructors to an array
+            time.append(str(data)[92:98] + '-' + str(data)[101:108])  # Adding all the times to an array
       elif "9:00pm" in str(data):
-            time.append(str(data)[92:98] + '-' + str(data)[101:107])  # Adding all the instructors to an array
+            time.append(str(data)[92:98] + '-' + str(data)[101:107])  # Adding all the times to an array
       elif "11:59am" in str(data):
-            time.append(str(data)[92:98] + '-' + str(data)[101:108])  # Adding all the instructors to an array
+            time.append(str(data)[92:98] + '-' + str(data)[101:108])  # Adding all the times to an array
       elif "Arranged" in str(data):
             time.append(str(data)[75:83])  # Adding all the instructors to an array
       i = i + 14  # Makes the list iterate every class
@@ -138,14 +142,18 @@ for data in results:  # Running through every result
             instructor.append(str(data)[54:60] + ' ' + str(data)[61:66])  # Adding all the instructors to an array
       i = i + 14  # Makes the list iterate every class
 
-"""
 # LOCATION
-i = 0  # Variable for iterating
+i = 20  # Variable for iterating
 for data in results:  # Running through every result
-      data = results[i].get('id')  # Print the class out
-      location.append(data[:-6])  # Adding all the instructors to an array
-      i = i + 1  # Makes the list iterate every class
-"""
+      data = results3[i]  # Print the credits out
+      if "Online" in str(data):
+            location.append("Online")  # Adding all the locations to an array
+      else:
+            location.append("MCTC " + str(data)[141:156])  # Adding all the locations to an array
+      i = i + 14  # Makes the list iterate every class
+
+print(location)
+
 # Make a new workbook
 workbook = Workbook()
 
@@ -162,7 +170,7 @@ worksheet.cell(1, 4, "Day")
 worksheet.cell(1, 5, "Time")
 worksheet.cell(1, 6, "Credits")
 worksheet.cell(1, 7, "Instructor")
-# worksheet.cell(1, 1, "Location")
+worksheet.cell(1, 8, "Location")
 
 # Assigning the data to each row
 for index, data in enumerate(id):  # Iterating through the list
